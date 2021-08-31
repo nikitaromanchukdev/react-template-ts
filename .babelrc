@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [ "./src" ],
+        "alias": {
+          "/": "./",
+          "@/": "./"
+        },
+        "stripExtensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
+  ]
+}
+
