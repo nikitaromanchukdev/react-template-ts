@@ -1,33 +1,87 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true  
+  },
+  "plugins": [
+    "react",
+    "import",
+    "react-hooks",
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "plugins": [
-        "react",
-        "import",
-        "react-hooks",
-        "@typescript-eslint"
-    ],
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "rules": {
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "moduleDirectory": ["node_modules", "src/"]
-            }
-        }
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "src/"
+        ],
+        "extensions": [ 
+          ".ts",
+          ".tsx"
+        ]
+      }
     }
+  },
+
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "result", // reduce accumulator
+          "state" // redux slice reducers
+        ]
+      }
+    ],
+    
+    "no-use-before-define": "off", // #3
+
+    "react/jsx-filename-extension": [ 
+      "warn", 
+      { "extensions": [".tsx"] } 
+    ],
+
+    "react/jsx-uses-react": "off", // #1
+    "react/react-in-jsx-scope": "off", // #1
+
+    "no-shadow": "off", // #2
+
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      { "allowExpressions": true }
+    ],
+    "@typescript-eslint/no-use-before-define": ["error"], // #3
+    "@typescript-eslint/no-shadow": ["error"] // #2
+  }
 }
+
+
+// #1 - https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+// #2 - https://stackoverflow.com/questions/63961803/eslint-says-all-enums-in-typescript-app-are-already-declared-in-the-upper-scope
+// #3 - https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined/64024916#64024916
