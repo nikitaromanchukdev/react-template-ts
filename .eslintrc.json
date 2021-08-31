@@ -48,7 +48,7 @@
       }
     ],
     "import/prefer-default-export": "off",
-    
+
     "no-param-reassign": [
       "error",
       {
@@ -72,10 +72,10 @@
 
     "no-shadow": "off", // #2
 
-    "@typescript-eslint/explicit-function-return-type": [
-      "error",
-      { "allowExpressions": true }
-    ],
+    // "@typescript-eslint/explicit-function-return-type": [
+    //   "error",
+    //   { "allowExpressions": true }
+    // ],
     "@typescript-eslint/no-use-before-define": ["error"], // #3
     "@typescript-eslint/no-shadow": ["error"] // #2
   }
